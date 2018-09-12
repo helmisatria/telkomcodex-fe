@@ -44,9 +44,11 @@ export default {
     padding-bottom: 0.3em;
     color: #868686;
     cursor: pointer;
+    border-bottom: 2px solid white;
 
     &.active {
       border-bottom: 2px solid #53b9ec;
+      font-weight: 500;
     }
 
     &:hover:not(.active) {

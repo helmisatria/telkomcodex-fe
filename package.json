@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "surge": "cp dist/index.html dist/200.html && surge ./dist --domain codex-helmimamat.surge.sh"
   },
   "dependencies": {
     "axios": "^0.18.0",

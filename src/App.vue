@@ -24,7 +24,17 @@ export default {
   background-color: #f5f7fa;
 }
 
-* {
+body {
+  background-color: #f5f7fa;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+div,
+button {
   font-family: "Roboto", sans-serif !important;
 }
 </style>
