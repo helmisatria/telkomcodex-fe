@@ -19,6 +19,7 @@ const store = new Vuex.Store({
     isLoading: false,
     isError: undefined,
     isMinimized: false,
+    route: undefined
     // alert: {
     //   actions: '',
     //   data: undefined,
@@ -38,7 +39,8 @@ const store = new Vuex.Store({
   getters: {
     isLoading: state => state.isLoading,
     isError: state => state.isError,
-    isMinimized: state => state.isMinimized,
+    // isMinimized: state => state.isMinimized,
+    route: state => state.route,
   },
   mutations: {
     // toggleMinimize(state) {

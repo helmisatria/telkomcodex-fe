@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Sidebar />
-    <router-view />
+    <Sidebar id="app-sidebar"/>
+    <router-view id="app-view"/>
   </div>
 </template>
 
@@ -22,6 +22,11 @@ export default {
 #app {
   display: flex;
   background-color: #f5f7fa;
+  min-height: 100vh;
+
+  &-view {
+    margin-left: 12em;
+  }
 }
 
 body {
@@ -34,7 +39,8 @@ h3,
 p,
 span,
 div,
-button {
+button,
+textarea {
   font-family: "Roboto", sans-serif !important;
 }
 </style>

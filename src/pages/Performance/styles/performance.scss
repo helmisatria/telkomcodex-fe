@@ -1,0 +1,116 @@
+.performance-page {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  flex: 1;
+
+  .project {
+    display: flex;
+    flex: 1;
+    background-color: white;
+    padding: 1.2em;
+    flex-direction: row;
+    border-radius: 0.2em;
+
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-right: 2em;
+      align-items: center;
+      margin-bottom: 1em;
+
+      select {
+        background-color: white;
+        padding: 0.7em 0.8em;
+        border-radius: 0.3em;
+        flex: 1;
+        margin-left: 2em;
+        font-size: 0.9em;
+      }
+    }
+
+    .details {
+      .row {
+        display: flex;
+
+        &--title {
+          flex: 1;
+        }
+
+        &--value {
+          flex: 4;
+        }
+      }
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      span {
+        margin-bottom: 0.3em;
+      }
+
+      &.member {
+        background-color: #f5f7fa;
+        border-radius: 0.4em;
+        box-shadow: 2px 2px 1px #f0f0f0;
+        padding: 1.2em;
+
+        h2 {
+          margin-bottom: 0.5em;
+        }
+
+        #member td,
+        #member th {
+          border: 1px solid #ddd;
+          padding: 8px;
+          background-color: white;
+        }
+      }
+
+      .start-end-date {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+
+        .row {
+          display: flex;
+
+          &--title {
+            flex: 1;
+          }
+
+          &--value {
+            flex: 4;
+          }
+        }
+      }
+    }
+  }
+
+  .best-talent {
+    flex: 1;
+    margin-top: 1em;
+    border-radius: 0.4em;
+    padding: 1.5em;
+    background-color: white;
+
+    h1 {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+#performance {
+  flex: 1;
+  width: 100%;
+}
+
+#performance td,
+#performance th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
