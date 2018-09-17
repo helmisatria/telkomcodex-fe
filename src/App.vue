@@ -7,11 +7,12 @@
 
 <script>
 import Sidebar from "./components/Sidebar";
-
+import Popup from "./components/Popup";
 export default {
   name: "App",
   components: {
-    Sidebar
+    Sidebar,
+    Popup
   }
 };
 </script>

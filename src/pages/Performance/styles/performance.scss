@@ -31,6 +31,9 @@
     }
 
     .details {
+      margin-top: 0.3em;
+      line-height: 1.2em;
+
       .row {
         display: flex;
 
@@ -107,10 +110,23 @@
 #performance {
   flex: 1;
   width: 100%;
+
+  .name {
+    color: #53b9ec;
+    cursor: pointer;
+  }
 }
 
 #performance td,
 #performance th {
   border: 1px solid #ddd;
   padding: 8px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }

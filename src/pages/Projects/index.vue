@@ -1,5 +1,10 @@
 <template>
   <div class="projects--container">
+    <transition name="fade">
+      <Popup v-if="isActiveComment">
+        <PopupComment @saveComment="saveComment"/>
+      </Popup>
+    </transition>
     <div class="projects--queue">
       <h1>Queue All Projects</h1>
       <table id="projects--table">
@@ -17,7 +22,7 @@
           <td>TNT</td>
           <td>TNT</td>
           <td>15</td>
-          <td>Complete</td>
+          <td @click="saveComment">Complete</td>
         </tr>
         <tr>
           <td>2</td>
@@ -181,8 +186,25 @@
 </template>
 
 <script>
+import Popup from "../../components/Popup";
+import PopupComment from "./components/PopupComment";
+
 export default {
-  name: "ProjectsPage"
+  name: "ProjectsPage",
+  components: {
+    Popup,
+    PopupComment
+  },
+  data() {
+    return {
+      isActiveComment: false
+    };
+  },
+  methods: {
+    saveComment() {
+      this.isActiveComment = !this.isActiveComment;
+    }
+  }
 };
 </script>
 

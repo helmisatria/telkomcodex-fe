@@ -1,0 +1,36 @@
+#popup-comment {
+  display: flex;
+  width: 30em;
+  height: 25em;
+  background-color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  padding: 1.5em;
+
+  flex-direction: column;
+}
+
+textarea {
+  margin-top: 2em;
+  border-radius: 0.5em;
+  height: 19em;
+  padding: 1em;
+}
+
+.btn--save {
+  border: 0;
+  padding: 0.7em 2em;
+  border-radius: 0.3em;
+  background-color: #53b9ec;
+  color: white;
+  font-weight: 500;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.btn--wrapper {
+  display: flex;
+  margin-top: 1.5em;
+  justify-content: flex-end;
+}

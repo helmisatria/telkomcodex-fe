@@ -67,7 +67,7 @@ export default {
   &--point {
     font-size: 1em;
     margin-top: 1.2em;
-    padding-bottom: 0.3em;
+    padding-bottom: 0.5em;
     color: #868686;
     cursor: pointer;
     border-bottom: 2px solid white;

@@ -1,5 +1,12 @@
 <template>
   <div class="performance-page">
+    <transition name="fade">
+      <Popup v-if="isPopupActive">
+        <PopupPerformance 
+          @closePopup="onClickStream"
+        />
+      </Popup>
+    </transition>
     <div class="project">
       <div class="item">
         <div class="title">
@@ -79,96 +86,48 @@
         </tr>
         <tr>
           <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
+          <td
+            class="name"
+            @click="onClickStream"
+          >Helmi Satria</td>
+          <td 
+          >Backend</td>
           <td>1</td>
           <td>1</td>
           <td>1</td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
+          <td>2</td>
+          <td
+            class="name"
+            @click="onClickStream"
+          >Helmi Satria</td>
+          <td
+          >Frontend</td>
           <td>1</td>
           <td>1</td>
           <td>1</td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
+          <td>3</td>
+          <td
+            class="name"
+            @click="onClickStream"
+          >Helmi Satria</td>
+          <td 
+          >Devops</td>
           <td>1</td>
           <td>1</td>
           <td>1</td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
+          <td>4</td>
+          <td
+            class="name"
+            @click="onClickStream"
+          >Helmi Satria</td>
+          <td 
+          >Backend</td>
           <td>1</td>
           <td>1</td>
           <td>1</td>
@@ -180,8 +139,25 @@
 </template>
 
 <script>
+import Popup from "../../components/Popup";
+import PopupPerformance from "./components/PopupPerformance";
+
 export default {
-  name: "PerformancePage"
+  name: "PerformancePage",
+  components: {
+    Popup,
+    PopupPerformance
+  },
+  data() {
+    return {
+      isPopupActive: false
+    };
+  },
+  methods: {
+    onClickStream() {
+      this.isPopupActive = !this.isPopupActive;
+    }
+  }
 };
 </script>
 
