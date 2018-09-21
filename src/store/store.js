@@ -4,13 +4,15 @@ import Vuex from 'vuex'
 // Modules
 import projects from './modules/projects/projects'
 import performance from './modules/performance/performance'
+import calendar from './modules/calendar/calendar'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
     projects,
-    performance
+    performance,
+    calendar
   },
   state: {
     isLoading: false,

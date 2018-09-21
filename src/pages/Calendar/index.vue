@@ -21,50 +21,35 @@
       <div class="new-note">
         <div class="title">
           <h1>{{formattedDate}}</h1>
-          <button class="btn--save">SAVE</button>
+          <button class="btn--save" @click="onCreateNewEvent">SAVE</button>
         </div>
         <div class="input">
           <textarea 
             cols="30"
             rows="10"
             placeholder="Klik untuk menulis notes..."
+            v-model="notes"
           >
           </textarea>
         </div>
 
       </div>
-      <div class="list-event">
-        <h1>Event</h1>
-        <div class="row">
-          <div class="date--detail">
-            <div>
-              <h2>4</h2>
-              <h4>Juni</h4>
-              <h4>10:00 AM</h4>
-            </div>
-          </div>
-          <div class="date--description">
-            Bertemu dengan pak Rudi di Bandara Halim membawa dokumen terkait projek.
-
-            <div class="date--description-footer">
-              <div class="left-footer">
-                <i class="material-icons">location_on</i>
-                <span>Bandara Halim Kusuma</span>
-              </div>
-              <span class="see-more">SEE MORE</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ListEvent />
     </div>
   </div>
 </template>
 
 <script>
 import moment from "moment";
+import { mapActions, mapGetters } from "vuex";
+
+import ListEvent from "./components/ListEvent";
 
 export default {
   name: "CalendarPage",
+  components: {
+    ListEvent
+  },
   data() {
     const hSpacing = "15px";
     return {
@@ -96,26 +81,48 @@ export default {
       }
     };
   },
+  created() {
+    this.fetchEvents();
+    this.setNewEvent({
+      dueDate: new Date()
+    });
+  },
   computed: {
+    ...mapGetters("calendar", ["newEvent"]),
     selectedDate: {
       get() {
-        return this.localSelectedDate;
+        return this.localSelectedDate || new Date();
       },
       set(val) {
-        console.log(val);
-        console.log("====================================");
-        console.log(this.localSelectedDate);
-        console.log("====================================");
-        this.localSelectedDate = val;
+        this.localSelectedDate = val || new Date();
+        this.setNewEvent({
+          dueDate: val
+        });
+      }
+    },
+    notes: {
+      get() {
+        return this.newEvent.notes;
+      },
+      set(val) {
+        this.setNewEvent({
+          notes: val
+        });
       }
     },
     formattedDate() {
       return moment(this.localSelectedDate).format("D MMMM YYYY");
     }
+  },
+  methods: {
+    ...mapActions("calendar", ["fetchEvents", "setNewEvent", "createNewEvent"]),
+    onCreateNewEvent() {
+      this.createNewEvent();
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "./styles/calendar";
 </style>
