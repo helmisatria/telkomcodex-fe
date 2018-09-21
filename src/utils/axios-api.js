@@ -4,7 +4,7 @@ import app from '../main'; // import the instance
 // https://github.com/axios/axios#interceptors
 
 const instance = axios.create({
-  baseURL: 'https://products-db.now.sh/',
+  baseURL: 'https://safe-crag-23533.herokuapp.com',
   headers: {
     'Content-Type': 'application/json'
   },

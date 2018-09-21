@@ -44,6 +44,7 @@
 
   .item {
     background-color: white;
+    align-self: flex-start;
     flex: 1;
     padding: 1em;
     border-radius: 0.2em;
@@ -60,12 +61,12 @@
   .best-product {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   .best-product h1,
   .best-squad h1 {
-    margin-bottom: 1em;
+    margin-bottom: 1.6em;
     font-size: 1.3em;
   }
 
@@ -130,7 +131,7 @@
 .talent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   h2 {
     font-size: 1.2em;

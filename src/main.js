@@ -5,13 +5,19 @@ import store from './store/store'
 import { sync } from 'vuex-router-sync'
 import VCalendar from 'v-calendar';
 import 'v-calendar/lib/v-calendar.min.css';
-
+import VueProgressBar from 'vue-progressbar'
 
 import { routes } from './routes'
 
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
+Vue.use(VueProgressBar, {
+  color: '#53b9ec',
+  failedColor: '#ffc53e',
+  thickness: '2px',
+})
+
 Vue.use(VCalendar, {
   firstDayOfWeek: 2,
 })
@@ -23,7 +29,7 @@ export const router = new VueRouter({
 
 sync(store, router)
 
-new Vue({
+export default new Vue({
   render: h => h(App),
   router,
   store

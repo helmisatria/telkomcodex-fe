@@ -2,20 +2,31 @@
   <div class="calendar">
     <div class="date">
       <h1>Date</h1>
-      <v-calendar 
+      <v-date-picker
         :theme-styles='themeStyles'
-      />
+        mode="single"
+        is-inline
+        v-model="selectedDate"
+        :min-date='new Date()'
+        :select-attribute="{
+          contentStyle: {
+            backgroundColor: '#66B3CC',
+            padding: '1.15em'
+          }
+        }"
+      >
+      </v-date-picker>
     </div>
     <div class="event-detail">
       <div class="new-note">
         <div class="title">
-          <h1>Rabu, 6 Juni 2018</h1>
+          <h1>{{formattedDate}}</h1>
           <button class="btn--save">SAVE</button>
         </div>
         <div class="input">
           <textarea 
-            cols="30" 
-            rows="10" 
+            cols="30"
+            rows="10"
             placeholder="Klik untuk menulis notes..."
           >
           </textarea>
@@ -50,11 +61,14 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   name: "CalendarPage",
   data() {
     const hSpacing = "15px";
     return {
+      localSelectedDate: new Date(),
       themeStyles: {
         wrapper: {
           border: 0,
@@ -76,11 +90,28 @@ export default {
           padding: `0 ${hSpacing} ${hSpacing} ${hSpacing}`
         },
         dayContent: {
-          fontSize: "1rem",
-          padding: "1.2em 1em"
+          fontSize: "1.2em",
+          padding: "1.2em 1.2em"
         }
       }
     };
+  },
+  computed: {
+    selectedDate: {
+      get() {
+        return this.localSelectedDate;
+      },
+      set(val) {
+        console.log(val);
+        console.log("====================================");
+        console.log(this.localSelectedDate);
+        console.log("====================================");
+        this.localSelectedDate = val;
+      }
+    },
+    formattedDate() {
+      return moment(this.localSelectedDate).format("D MMMM YYYY");
+    }
   }
 };
 </script>

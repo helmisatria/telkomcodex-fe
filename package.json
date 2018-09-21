@@ -3,19 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "surge": "cp dist/index.html dist/200.html && surge ./dist --domain codex-helmimamat.surge.sh"
+    "surge": "cp dist/index.html dist/200.html && surge ./dist --domain telkomcodex.surge.sh"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
     "css-loader": "^1.0.0",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.2",
     "v-calendar": "^0.9.7",
     "vue": "^2.5.17",
+    "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.1",
     "vue-star-rating": "^1.6.0",
     "vuex": "^3.0.1",

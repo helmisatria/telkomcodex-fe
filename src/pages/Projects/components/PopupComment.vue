@@ -12,11 +12,13 @@
 </template>
 
 <script>
+import { EventBus } from "../../../event-bus";
+
 export default {
   name: "PopupComment",
   methods: {
     onClickSave() {
-      this.$emit("saveComment");
+      EventBus.$emit("togglePopup");
     }
   }
 };
