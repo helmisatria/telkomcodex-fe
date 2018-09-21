@@ -12,3 +12,17 @@ export const fetchProjectDetail = async ({ commit }, { key }) => {
     console.error(error);
   }
 };
+
+export const fetchMemberDetail = async ({ commit }) => {
+  try {
+    const result = await api.get(`member/detail/1`, {
+      params: {
+        periode: 4
+      }
+    })
+
+    commit('setMemberDetail', result.data)
+  } catch (error) {
+    console.error(error);
+  }
+}

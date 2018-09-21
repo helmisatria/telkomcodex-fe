@@ -2,7 +2,7 @@
   <div class="performance-page">
     <transition name="fade">
       <Popup v-if="isPopupActive">
-        <PopupPerformance />
+        <PopupPerformance :memberInformation="memberInformation"/>
       </Popup>
     </transition>
     <ProjectWrapper />
@@ -29,12 +29,17 @@ export default {
   },
   data() {
     return {
-      isPopupActive: false
+      isPopupActive: false,
+      memberInformation: undefined
     };
   },
   async created() {
     EventBus.$on("togglePopupPerformance", () => {
       this.isPopupActive = !this.isPopupActive;
+    });
+    EventBus.$on("openPopupPerformance", member => {
+      this.isPopupActive = true;
+      this.memberInformation = member;
     });
     await this.fetchProjects();
     await this.fetchProjectDetail({ key: this.projects[0].key });

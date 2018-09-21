@@ -11,13 +11,15 @@ const state = {
     start: new Date(),
   },
   members: [],
-  bestTalent: []
+  bestTalent: [],
+  memberDetail: undefined
 }
 
 const getters = {
   project: state => state.project,
   members: state => state.members,
   bestTalent: state => state.bestTalent,
+  memberDetail: state => state.memberDetail,
 }
 
 export default {

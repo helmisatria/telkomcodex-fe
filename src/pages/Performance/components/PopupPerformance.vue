@@ -1,16 +1,16 @@
 <template>
   <div id="popup-performance">
     <div class="row">
-      <img src="https://cdn.dribbble.com/users/631735/screenshots/3946090/image.png" alt="">
+      <img :src="memberInformation.avatar" alt="">
       <div class="detail-person">
         <div class="info-group">
           <div class="info">
             <span class="info--title">Nama</span>
-            <span class="info--value">: Helmi Satria</span>
+            <span class="info--value">: {{memberInformation.name}}</span>
           </div>
           <div class="info">
             <span class="info--title">Stream</span>
-            <span class="info--value">: Developer</span>
+            <span class="info--value">: {{memberInformation.stream}}</span>
           </div>
           <div class="info">
             <span class="info--title">Level</span>
@@ -23,7 +23,7 @@
             :starSize="25"
             :showRating="false"
             :padding="8"
-            :rating="3"
+            :rating="memberDetail.level"
           />
         </div>
       </div>
@@ -45,16 +45,21 @@
 import { EventBus } from "../../../event-bus";
 import StarRating from "vue-star-rating";
 import Chart from "chart.js";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     StarRating
   },
+  props: ["memberInformation"],
   name: "PopupPerformance",
   methods: {
     closePopup() {
       EventBus.$emit("togglePopupPerformance");
     }
+  },
+  computed: {
+    ...mapGetters("performance", ["memberDetail"])
   },
   mounted() {
     var ctx = this.$refs.chart;
@@ -66,21 +71,21 @@ export default {
         datasets: [
           {
             label: "Point Burn",
-            data: [12, 19, 3, 5],
+            data: this.memberDetail.intensity.map(i => i.burn),
             backgroundColor: "rgba(255, 99, 132, 0)",
             borderColor: "rgba(255,99,132,1)",
             borderWidth: 1
           },
           {
             label: "Point Remain",
-            data: [15, 26, 3, 5],
+            data: this.memberDetail.intensity.map(i => i.remaining),
             backgroundColor: "rgba(54, 162, 235, 0)",
             borderColor: "rgba(54, 162, 235, 1)",
             borderWidth: 1
           },
           {
             label: "Point Queue",
-            data: [32, 8, 6, 10],
+            data: this.memberDetail.intensity.map(i => i.queue),
             backgroundColor: "rgba(75, 192, 192, 0)",
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1

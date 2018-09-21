@@ -15,7 +15,7 @@
         <td>{{i+1}}</td>
         <td
           class="name"
-          @click="openPopup"
+          @click="openPopup(member)"
         >{{member.name}}</td>
         <td 
         >{{member.stream}}</td>
@@ -29,7 +29,7 @@
 
 <script>
 import { EventBus } from "../../../event-bus.js";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "BestTalent",
@@ -37,8 +37,10 @@ export default {
     ...mapGetters("performance", ["members"])
   },
   methods: {
-    openPopup() {
-      EventBus.$emit("togglePopupPerformance");
+    ...mapActions("performance", ["fetchMemberDetail"]),
+    async openPopup(member) {
+      await this.fetchMemberDetail();
+      EventBus.$emit("openPopupPerformance", member);
     }
   }
 };
