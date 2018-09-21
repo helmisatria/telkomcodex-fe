@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <img 
-      src="../assets/logo.png" 
+      src="http://telkomcodex.io/static/codex-logo.png" 
       alt="logo" 
       class="sidebar--logo"
     />
