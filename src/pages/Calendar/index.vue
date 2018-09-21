@@ -7,11 +7,12 @@
         mode="single"
         is-inline
         v-model="selectedDate"
+        :attributes="attributes"
         :min-date='new Date()'
         :select-attribute="{
           contentStyle: {
             backgroundColor: '#66B3CC',
-            padding: '1.15em'
+            padding: '1em'
           }
         }"
       >
@@ -75,8 +76,9 @@ export default {
           padding: `0 ${hSpacing} ${hSpacing} ${hSpacing}`
         },
         dayContent: {
-          fontSize: "1.2em",
-          padding: "1.2em 1.2em"
+          fontSize: "1em",
+          margin: ".5em",
+          padding: "1em"
         }
       }
     };
@@ -88,7 +90,21 @@ export default {
     });
   },
   computed: {
-    ...mapGetters("calendar", ["newEvent"]),
+    ...mapGetters("calendar", ["newEvent", "events"]),
+    attributes() {
+      return this.events.map(event => {
+        return {
+          dot: {
+            backgroundColor: "#f55151",
+            diameter: "6px"
+          },
+          popover: {
+            label: event.notes
+          },
+          dates: new Date(event.dueDate)
+        };
+      });
+    },
     selectedDate: {
       get() {
         return this.localSelectedDate || new Date();

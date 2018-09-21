@@ -11,11 +11,11 @@ export const fetchEvents = async ({ commit }) => {
   }
 };
 
-export const setNewEvent = ({ commit, state }, data) => {  
+export const setNewEvent = ({ commit }, data) => {  
   commit('setNewEvent', data)
 }
 
-export const createNewEvent = async ({ commit, state }) => {
+export const createNewEvent = async ({ commit, dispatch, state }) => {
   
   try {
     await api.post('calendar', {
@@ -23,6 +23,8 @@ export const createNewEvent = async ({ commit, state }) => {
       location: state.newEvent.location,
       dueDate: new Date(state.newEvent.dueDate).getTime()
     })
+
+    dispatch('fetchEvents')
 
     commit('createNewEvent')
   } catch (error) {
