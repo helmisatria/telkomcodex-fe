@@ -1,21 +1,5 @@
-# telkom-codex-fe
+# Telkom Codex Frontend
 
-## Project setup
-```
-yarn install
-```
+For this tourney we have two repositories. One for backend and one for frontend. For the frontend we write it using **Vue.js**. For the backend we use **typescript + expressjs**.
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
+For the preview you can access it in [http://telkomcodex.surge.s](http://telkomcodex.surge.sh/)h. Unfortunately we deploy the backend in **heroku**, whereas it has **sleep time and limited bandwidth**, thus make it a bit harder to use.

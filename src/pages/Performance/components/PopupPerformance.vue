@@ -36,14 +36,13 @@
     <div class="row align-center space-between footer">
       <span>Total Point: 23.400</span>
 
-      <button class="btn--back" 
-        @click="$emit('closePopup')"
-      >BACK</button>
+      <button class="btn--back" @click="closePopup">BACK</button>
     </div>
   </div>
 </template>
 
 <script>
+import { EventBus } from "../../../event-bus";
 import StarRating from "vue-star-rating";
 import Chart from "chart.js";
 
@@ -52,6 +51,11 @@ export default {
     StarRating
   },
   name: "PopupPerformance",
+  methods: {
+    closePopup() {
+      EventBus.$emit("togglePopupPerformance");
+    }
+  },
   mounted() {
     var ctx = this.$refs.chart;
 
